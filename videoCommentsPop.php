@@ -1,5 +1,4 @@
 <?
-
 /* --------------------------------------------------------------------------*/
 /*                                                                           */
 /* QuickTime Video Comments WordPress Plugin								 */   
@@ -36,7 +35,7 @@ include_once("videoCommentsLib.php");
 if ((!isset($_GET['movie'])) || (!isset($_GET['height'])) || (!isset($_GET['width'])) || (!isset($_GET['postid']))) {
 	exit;
 } else {
-	$movie = $_GET['movie'];
+	$movie = trim($_GET['movie']);
 	$height = $_GET['height'];
 	$width = $_GET['width'];
 	
@@ -54,37 +53,23 @@ if ((!isset($_GET['movie'])) || (!isset($_GET['height'])) || (!isset($_GET['widt
 <html>
 	<head>
 		<script language="JavaScript" src="qtobject.js"></script>
-		<script language="JavaScript" src="videoComments.js"></script>	
+		<script language="JavaScript" src="videoComments.js.php"></script>	
 		<link rel="stylesheet" href="style.css" type="text/css"/>
 	</head>
 	
-	<body>
+	<body onload="initvideo(<?= $postid; ?>,'<?= $title; ?>','<?= $timecode; ?>')">
 	
 		<div id="header"><?= stripslashes($title); ?></div>
 	
 		<div id="movie_container">
+				<video id="movieplayer" src="<?= $movie; ?>" width="<?= $width; ?>" height="<?= $height; ?>" controls></video>
+
 			<script type="text/javascript">
-			<!--
-				myQTObject = new QTObject("<?= $movie; ?>", "movieplayer", "<?= $width; ?>", "<?= $height; ?>");
-				myQTObject.altTxt = "This requires QuickTime: http://www.apple.com/quicktime/";
-				myQTObject.addParam("controller", "true");
-				myQTObject.addParam("AUTOPLAY","TRUE");
-				myQTObject.addParam("SCALE","ASPECT");
-				myQTObject.write();
-				
+			<!--				
 				// The init onload isn't getting called in FF on Mac
-				initvideo(<?= $postid; ?>,'<?= $title; ?>','<?= $timecode; ?>');				
+				//initvideo(<?= $postid; ?>,'<?= $title; ?>','<?= $timecode; ?>');				
 			// -->	
 			</script>
-			<noscript>
-				<OBJECT CLASSID="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" WIDTH="<?= $width; ?>" HEIGHT="<?= $height; ?>" CODEBASE="http://www.apple.com/qtactivex/qtplugin.cab">
-				<PARAM name="SRC" VALUE="<?= $movie; ?>" />
-				<PARAM name="CONTROLLER" VALUE="true" />
-				<PARAM name="AUTOPLAY" VALUE="false" />
-				<PARAM name="SCALE" VALUE="ASPECT" />
-				<EMBED SRC="<?= $movie; ?>" CONTROLLER="true" WIDTH="<?= $width; ?>" HEIGHT="<?= $height; ?>" AUTOPLAY="false" SCALE="ASPECT" PLUGINSPAGE="http://www.apple.com/quicktime/download/"></EMBED>
-				</OBJECT>
-			</noscript>
 		</div>
 	
 		<div id="comments_container" style="height:<?= $height-30; ?>;width:<?= $width; ?>">
@@ -95,8 +80,8 @@ if ((!isset($_GET['movie'])) || (!isset($_GET['height'])) || (!isset($_GET['widt
 		</div>
 		
 		
-		<div id="comment_form" style="display:none;">	
-			<form method="post" id="commentform">
+		<div id="vc_comment_form" style="display:none;">	
+			<form method="post" id="vc_commentform">
 			<? if ( $user_ID ) : ?>		
 				Logged in as <a href="<? echo get_option('siteurl'); ?>/wp-admin/profile.php"><?= $user_identity; ?></a>. 
 				<a href="<?= get_option('siteurl'); ?>/wp-login.php?action=logout" title="<? _e('Log out of this account') ?>" target="parent">Logout &raquo;</a>
