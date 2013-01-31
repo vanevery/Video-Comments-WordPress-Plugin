@@ -1,0 +1,150 @@
+/* --------------------------------------------------------------------------*/
+/*                                                                           */
+/* QuickTime Video Comments WordPress Plugin								 */   
+/* Written by Shawn Van Every <vanevery@walking-productions.com>			 */
+/*	and John Schimmel														 */		
+/*                                                                           */
+/* Copyright (c) 2006-2007 Shawn Van Every <vanevery@walking-productions.com>*/
+/* 	and John Schimmel              											 */
+/*                                                                           */
+/* This program is free software; you can redistribute it and/or             */
+/* modify it under the terms of the GNU General Public License               */
+/* as published by the Free Software Foundation; either version 2            */
+/* of the License, or (at your option) any later version.                    */
+/*                                                                           */
+/* See file LICENSE for further informations on licensing terms.             */
+/*                                                                           */
+/* This program is distributed in the hope that it will be useful,           */
+/* but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/* GNU General Public License for more details.                              */
+/*                                                                           */
+/* You should have received a copy of the GNU General Public License         */
+/* along with this program; if not, write to the Free Software Foundation,   */
+/* Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.           */
+/*                                                                           */
+/* --------------------------------------------------------------------------*/
+
+
+body {
+	font-size:12px;
+	font-family:Verdana;
+	margin:0;
+	padding:0;
+	background:#e8e8e8;
+}
+
+/*  div styles */
+
+div#header {
+	float:top;
+	padding:0;
+	
+	width:100%;
+	height:20px;
+	text-align:center;
+	font-size:18px;
+	margin-bottom:5px;
+
+}
+
+div#movie_container {
+	padding:3px;	
+	padding-bottom:1px;
+	background:grey;
+}
+
+div#comments_container {
+	float:top;
+	margin:8px;	
+	/*height:230px;*/
+	/*width:340px;*/
+	overflow:scroll;
+	background:white;
+}
+
+div#oneButton {
+	margin-left:10px;
+}
+
+div#movie_container {
+	float:left;
+	margin:5px;
+	
+}
+
+div#commentform {
+	float:top;
+	margin:5px;
+	width:auto;
+	
+	height:200px;
+	width:340px;
+}
+
+.timecode {
+	text-decoration:underline;
+}
+
+div.non_live_comment {
+	font-size:11px;
+	padding:0 5px 0 5px;
+}
+
+div.non_live_comment:hover {
+	background-color:#F0E895;
+}
+
+
+
+
+/*  font styles  */
+h1 {
+	font-size:10pt;
+}
+
+.timecode {
+	font-size:x-small;
+	color:grey;
+}
+
+
+/* comment form styles */
+
+input.videocomments_form  {
+	border:1px solid grey;
+	background:white;
+	float:top;
+	margin:2px;
+}
+
+input.videocomments_buttons {
+	border:1px solid grey;
+	background:white;
+	padding:3px;
+}
+
+#make_Button:hover,#save_Button:hover, #cancel_Button:hover{
+	background:#71C589;
+}
+div#footer {
+	float:top;
+	position:absolute;
+	bottom:1;
+	right:3;
+	width:100%:
+	background:black;
+	color:black;
+}
+
+div#footer a {
+	color:black;
+}
+
+
+#comment {
+	padding:4px;
+	width:335px;
+	height:120px;
+	border:1px solid grey;
+}	
