@@ -104,7 +104,6 @@ function insert_videoComment_js()
 {
 	global $manage_entry_path, $postid;
 ?>
-	<script language="JavaScript" src="<?php echo $manage_entry_path; ?>/qtobject.js"></script>	
 	<script language="JavaScript">	
 		function videoComments_loadVideo() 
 		{
@@ -114,18 +113,10 @@ function insert_videoComment_js()
 			
 			if ((video_url != '') && (video_width != '') && (video_height != '')) 
 			{
-				video_height = video_height * 1; //quick convert to number by multiplying
-				video_height = video_height + 15; //add a few pixels for the qt controller
-				
-				/* This should probably use the QTObject class instead */
-				
-				myQTObject = new QTObject(video_url, "movieplayer", video_width, video_height);
-				myQTObject.altTxt = "This requires QuickTime: http://www.apple.com/quicktime/";
-				myQTObject.addParam("controller", "true");
-				myQTObject.addParam("AUTOPLAY","FALSE");
-				myQTObject.addParam("SCALE","ASPECT");
+
 				myQTObject.write("videoComments_preview");
-								
+
+				getElement('videoComments_preview').innerHTML = '<video id="movieplayer" src="' + video_url '" width="' + video_width + '" height="' + video_height + '" controls></video>';
 				getElement('videoComments_preview').style.width = video_width;
 				getElement('videoComments_preview').style.height = video_height;
 			}
@@ -145,7 +136,7 @@ function insert_videoComment_jsFooter()
 {
 	global $post;
 	
-	if ($_GET['post'] != "") 
+	if (isset($_GET['post']) && $_GET['post'] != "") 
 	{
 	?>
 		<script>

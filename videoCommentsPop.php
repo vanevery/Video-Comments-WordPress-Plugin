@@ -63,13 +63,6 @@ if ((!isset($_GET['movie'])) || (!isset($_GET['height'])) || (!isset($_GET['widt
 	
 		<div id="movie_container">
 				<video id="movieplayer" src="<?= $movie; ?>" width="<?= $width; ?>" height="<?= $height; ?>" controls></video>
-
-			<script type="text/javascript">
-			<!--				
-				// The init onload isn't getting called in FF on Mac
-				//initvideo(<?= $postid; ?>,'<?= $title; ?>','<?= $timecode; ?>');				
-			// -->	
-			</script>
 		</div>
 	
 		<div id="comments_container" style="height:<?= $height-30; ?>;width:<?= $width; ?>">

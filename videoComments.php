@@ -28,13 +28,13 @@
 /* --------------------------------------------------------------------------*/
 
 /*
-Plugin Name: QuickTime Video Comments
-Plugin URI: http://www.itp.nyu.edu/research/vc/
+Plugin Name: HTML5 Video Comments
+Plugin URI: 
 Description: Enable comments on your videos
 In as: [QT_COMMENTS file width height]
 Author: John Schimmel & Shawn Van Every
-Version: 2.0.1b
-Author URI: http://www.itp.nyu.edu/research/
+Version: 2.0.2b
+Author URI: 
 Instructions:
 
 This is an all new version of the video comments plugin.  Many portions of it are rewritten but the concept and the look and feel do remain the same.  A little bit of reverse compatability has been lost.  In particular, the administrative interface no longer displays a preview of the video in the form for previous entries.  New entries should work fine and the previous entries should still work as normal on the front end.
@@ -66,7 +66,8 @@ add_filter('edit_form_advanced','videoComments_form'); //display WYSIWYG editors
 add_filter('simple_form','videoComments_form'); //displays simple editor videocomments form
 add_filter('comment_text','videocomments_append_to_wpComments'); //add videocomments popup link to timecode comments.
 
-add_action('activate_videoComments/videoComments.php','videoComments_install');  // installs the database table
+//add_action('activate_videoComments/videoComments.php','videoComments_install');  // installs the database table
+register_activation_hook( __FILE__, 'videoComments_install' );
 
 
 ?>
